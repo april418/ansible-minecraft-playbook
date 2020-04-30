@@ -1,0 +1,32 @@
+---
+- name: make directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "{{ minecraft_path }}"
+    - "{{ minecraft_path }}/tmp"
+
+- name: download minecraft
+  get_url:
+    url: "https://launcher.mojang.com/v1/objects/{{ minecraft_version_hex }}/server.jar"
+    dest: "{{ minecraft_path }}/server.jar"
+    mode: 0700
+
+- name: put minecraftd
+  template:
+    src: minecraftd.sh.j2
+    dest: "/etc/init.d/minecraftd"
+    mode: 0755
+
+- name: start minecraft.d
+  service:
+    name: minecraftd
+    state: started
+
+- name: update eula.txt
+  template:
+    src: eula.txt.j2
+    dest: "{{ minecraft_path }}/eula.txt"
+    mode: 0644

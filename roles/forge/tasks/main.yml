@@ -1,0 +1,26 @@
+---
+- name: download forge installer
+  get_url:
+    url: https://files.minecraftforge.net/maven/net/minecraftforge/forge/{{ forge_version }}/forge-{{ forge_version }}-installer.jar
+    dest: "{{ forge_path }}/forge-{{ forge_version }}-installer.jar"
+    mode: 0700
+
+- name: download forge universal
+  get_url:
+    url: https://files.minecraftforge.net/maven/net/minecraftforge/forge/{{ forge_version }}/forge-{{ forge_version }}-universal.jar
+    dest: "{{ forge_path }}/forge-{{ forge_version }}-universal.jar"
+    mode: 0700
+
+- name: install forge
+  command: "java -jar {{ forge_path }}/forge-{{ forge_version }}-installer.jar nogui --installServer"
+
+- name: put minecraft-forged
+  template:
+    src: minecraft-forged.sh.j2
+    dest: /etc/init.d/minecraft-forged
+    mode: 0755
+
+- name: start minecraft-forged
+  service:
+    name: minecraft-forged
+    state: started
