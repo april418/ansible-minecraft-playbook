@@ -3,14 +3,7 @@
   become: yes
   become_user: root
   roles:
+    - swapfile
     - java
     - minecraft
     - forge
-  vars:
-    java_version: 1.8.0
-    jvm_initial_heap_size: 512m
-    jvm_maximum_heap_size: 512m
-    minecraft_path: /var/lib/minecraft
-    minecraft_version_hex: bb2b6b1aefcd70dfd1892149ac3a215f6c636b07
-    forge_path: "{{ minecraft_path }}"
-    forge_version: 1.15.2-31.1.0

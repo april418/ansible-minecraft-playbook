@@ -2,3 +2,12 @@
 MinecraftServer
 
 [minecraft-server:vars]
+swap_block_size=128M
+swap_block_count=16
+java_version=1.8.0
+jvm_initial_heap_size=1024M
+jvm_maximum_heap_size=1024M
+minecraft_path=/var/lib/minecraft
+minecraft_version_hex=bb2b6b1aefcd70dfd1892149ac3a215f6c636b07
+forge_path="{{ minecraft_path }}"
+forge_version=1.15.2-31.1.0
