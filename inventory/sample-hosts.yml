@@ -1,0 +1,21 @@
+---
+all:
+  hosts:
+  children:
+    minecraft_server:
+      hosts:
+      vars:
+    forge_server:
+      hosts:
+        MinecraftServer:
+      vars:
+        forge_path: "{{ minecraft_path }}"
+        forge_version: 1.16.3-34.1.10
+  vars:
+    swap_block_size: 128M
+    swap_block_count: 16
+    java_version: 1.8.0
+    jvm_initial_heap_size: 1024M
+    jvm_maximum_heap_size: 1024M
+    minecraft_path: /var/lib/games/minecraft
+    minecraft_version_hex: f02f4473dbf152c23d7d484952121db0b36698cb
