@@ -1,5 +1,5 @@
 ---
 - name: install jdk
-  yum:
+  package:
     name: "java-{{ java_version }}-openjdk.x86_64"
     state: latest

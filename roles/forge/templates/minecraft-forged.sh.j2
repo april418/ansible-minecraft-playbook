@@ -1,62 +1,54 @@
-#!/bin/sh
+#!/bin/bash
 
-export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
-
-APP_NAME=MinecraftForge
+APP_NAME="MinecraftForge"
 APP_ROOT="{{ forge_path }}"
-PID="$APP_ROOT/tmp/forge.pid"
+JAR_NAME="forge-{{ forge_version }}-universal.jar"
+JAR_PATH="$APP_ROOT/$JAR_NAME"
+SC_NAME="$APP_NAME"
+XMX="{{ jvm_maximum_heap_size }}"
+XMS="{{ jvm_initial_heap_size }}"
+PID="$APP_ROOT/tmp/$APP_NAME.pid"
 
-UNICORN_OPTS="-D -E $ENV -c $CONFIGS"
-
-start()
-{
+start() {
   if [ -e $PID ]; then
-    echo "$APP_NAME already started";
-    exit 1;
+    echo -e "\033[31m$APP_NAME is already running!\033[00m"
+    exit 1
   fi
-  echo "start $APP_NAME";
-  cd $APP_ROOT
-  java -Xms{{ jvm_initial_heap_size }} -Xmx{{ jvm_maximum_heap_size }} -jar forge-{{ forge_version }}-universal.jar nogui &
-  echo "$!" > $PID
+
+  echo "Starting $APP_NAME..."
+
+  screen -m -d -S $SC_NAME bash -c "cd $APP_ROOT && java -Xmx${XMX} -Xms${XMS} -jar $JAR_PATH nogui"
+  screen -ls | sed -n -E "s ^\s*(.+)\.$SC_NAME.+ \1 p" > $PID
+
+  echo -e "\033[32mStarted $APP_NAME\033[00m"
 }
 
-stop()
-{
+stop() {
   if [ ! -e $PID ]; then
-    echo "$APP_NAME not started";
-    exit 1;
+    echo -e "\033[31m$APP_NAME is not running!\033[00m"
+    exit 1
   fi
-  echo "stop $APP_NAME";
-  kill -QUIT `cat ${PID}`
+  
+  echo "Stopping $APP_NAME..."
+  
+  screen -S $SC_NAME -p 0 -X "stuff ^C"
+  kill $(cat $PID)
   rm -f $PID
+
+  echo -e "\033[32mStopped $APP_NAME\033[00m"
 }
 
-force_stop()
-{
-  if [ ! -e $PID ]; then
-    echo "$APP_NAME not started";
-    exit 1;
-  fi
-  echo "stop $APP_NAME";
-  kill -TERM `cat ${PID}`
-  rm -f $PID
-}
-
-reload()
-{
-  if [ ! -e $PID ]; then
-    echo "$APP_NAME not started";
-    start
-    exit 0;
-  fi
-  echo "reload $APP_NAME";
-  kill -HUP `cat ${PID}`
-}
-
-restart()
-{
+restart() {
   stop
   start
+}
+
+status() {
+  if [ -e $PID ]; then
+    echo -e "\033[32m$APP_NAME is already running!\033[00m"
+  else
+    echo -e "\033[31m$APP_NAME is not running!\033[00m"
+  fi
 }
 
 case "$1" in
@@ -66,18 +58,14 @@ case "$1" in
   stop)
     stop
     ;;
-  force-stop)
-    force_stop
-    ;;
-  reload)
-    reload
-    ;;
   restart)
     restart
     ;;
-  *)
-    echo "Syntax Error: release [start|stop|force-stop|reload|restart]"
+  status)
+    status
     ;;
+  *)
+    echo  $"Usage: $0 {start|stop|restart|status}"
 esac
 
-exit
+exit 0

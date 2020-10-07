@@ -1,9 +1,14 @@
 ---
+- name: disable swap
+  command: swapoff /swapfile
+
 - name: make swapfile
   command: "dd if=/dev/zero of=/swapfile bs={{ swap_block_size }} count={{ swap_block_count }}"
 
 - name: change swapfile permission
-  command: chmod 600 /swapfile
+  file:
+      path: /swapfile
+      mode: 0600
 
 - name: make swap
   command: mkswap /swapfile
@@ -11,5 +16,5 @@
 - name: enable swap
   command: swapon /swapfile
 
-- name:
-  command: sed -e '$ a /swapfile swap swap defaults 0 0' /etc/fstab
+- name: edit fstab
+  command: sed -i -e '$a/swapfile swap swap defaults 0 0' /etc/fstab

@@ -1,9 +1,19 @@
 ---
-- hosts: minecraft-server
+- hosts: minecraft_server
   become: yes
   become_user: root
   roles:
     - swapfile
+    - screen
+    - java
+    - minecraft
+
+- hosts: forge_server
+  become: yes
+  become_user: root
+  roles:
+    - swapfile
+    - screen
     - java
     - minecraft
     - forge

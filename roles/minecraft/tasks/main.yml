@@ -1,4 +1,10 @@
 ---
+- name: stop minecraft.d
+  service:
+    name: minecraftd
+    state: stopped
+  ignore_errors: yes
+
 - name: make directory
   file:
     path: "{{ item }}"
@@ -12,7 +18,8 @@
   get_url:
     url: "https://launcher.mojang.com/v1/objects/{{ minecraft_version_hex }}/server.jar"
     dest: "{{ minecraft_path }}/server.jar"
-    mode: 0700
+    mode: 0755
+    force: yes
 
 - name: put minecraftd
   template:
@@ -20,13 +27,24 @@
     dest: "/etc/init.d/minecraftd"
     mode: 0755
 
-- name: start minecraft.d
+- name: start minecraftd
   service:
     name: minecraftd
     state: started
 
-- name: update eula.txt
+- name: put server.properties
+  template:
+    src: server.properties.j2
+    dest: "{{ minecraft_path }}/server.properties"
+    mode: 0644
+
+- name: put eula.txt
   template:
     src: eula.txt.j2
     dest: "{{ minecraft_path }}/eula.txt"
     mode: 0644
+
+- name: restart minecraftd
+  service:
+    name: minecraftd
+    state: restarted

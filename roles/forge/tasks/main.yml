@@ -1,17 +1,25 @@
 ---
-- name: download forge installer
+- name: stop minecraft-forged
+  service:
+    name: minecraft-forged
+    state: stopped
+  ignore_errors: yes
+
+- name: download minecraft-forge installer
   get_url:
     url: https://files.minecraftforge.net/maven/net/minecraftforge/forge/{{ forge_version }}/forge-{{ forge_version }}-installer.jar
     dest: "{{ forge_path }}/forge-{{ forge_version }}-installer.jar"
-    mode: 0700
+    mode: 0755
+    force: yes
 
-- name: download forge universal
+- name: download minecraft-forge universal
   get_url:
     url: https://files.minecraftforge.net/maven/net/minecraftforge/forge/{{ forge_version }}/forge-{{ forge_version }}-universal.jar
     dest: "{{ forge_path }}/forge-{{ forge_version }}-universal.jar"
-    mode: 0700
+    mode: 0755
+    force: yes
 
-- name: install forge
+- name: install minecraft-forge
   command: "java -jar {{ forge_path }}/forge-{{ forge_version }}-installer.jar nogui --installServer"
 
 - name: put minecraft-forged
