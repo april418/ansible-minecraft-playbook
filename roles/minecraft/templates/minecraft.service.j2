@@ -1,0 +1,11 @@
+[Unit]
+Description = Start/Stop/Restart Minecraft server.
+
+[Service]
+Type = simple
+ExecStart = /etc/init.d/minecraftd start
+ExecStop = /etc/init.d/minecraftd stop
+Restart = always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,5 @@
 ---
-- name: stop minecraft.d
+- name: stop minecraftd
   service:
     name: minecraftd
     state: stopped
@@ -21,11 +21,18 @@
     mode: 0755
     force: yes
 
-- name: put minecraftd
+- name: put minecraftd for init.d
   template:
     src: minecraftd.sh.j2
     dest: "/etc/init.d/minecraftd"
     mode: 0755
+
+- name: put minecraft.service for systemd
+  template:
+    src: minecraft.service.j2
+    dest: "/etc/systemd/system/minecraft.service"
+    mode: 0755
+  when: ansible_service_mgr != 'systemd'
 
 - name: start minecraftd
   service:
