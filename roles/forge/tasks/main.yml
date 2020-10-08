@@ -28,6 +28,13 @@
     dest: /etc/init.d/minecraft-forged
     mode: 0755
 
+- name: put minecraft-forged.service for systemd
+  template:
+    src: minecraft-forged.service.j2
+    dest: "/etc/systemd/system/minecraft-forged.service"
+    mode: 0755
+  when: ansible_service_mgr == 'systemd'
+
 - name: start minecraft-forged
   service:
     name: minecraft-forged

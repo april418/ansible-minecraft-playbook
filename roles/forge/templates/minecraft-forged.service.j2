@@ -1,0 +1,11 @@
+[Unit]
+Description = Start/Stop/Restart Minecraft Forge server.
+
+[Service]
+Type = simple
+ExecStart = /etc/init.d/minecraft-forged start
+ExecStop = /etc/init.d/minecraft-forged stop
+Restart = always
+
+[Install]
+WantedBy=multi-user.target
