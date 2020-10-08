@@ -14,8 +14,6 @@ python:
 jobs:
   include:
     - os: linux
-      dist: trusty
-    - os: linux
       dist: xenial
     - os: linux
       dist: bionic
