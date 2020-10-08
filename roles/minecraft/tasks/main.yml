@@ -27,10 +27,10 @@
     dest: "/etc/init.d/minecraftd"
     mode: 0755
 
-- name: put minecraft.service for systemd
+- name: put minecraftd.service for systemd
   template:
-    src: minecraft.service.j2
-    dest: "/etc/systemd/system/minecraft.service"
+    src: minecraftd.service.j2
+    dest: "/etc/systemd/system/minecraftd.service"
     mode: 0755
   when: ansible_service_mgr == 'systemd'
 
