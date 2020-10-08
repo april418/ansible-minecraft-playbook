@@ -12,14 +12,10 @@ python:
   - 3.8
 
 os:
-  - centos 7
-  - centos 8
-  - ubuntu 20.04
+  - linux
 
 install:
   - pip install ansible
 
 script:
   - ansible-playbook main.yml -i inventory/test-hosts.yml
-
-sudo: required
