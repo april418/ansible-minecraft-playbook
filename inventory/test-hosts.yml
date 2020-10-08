@@ -17,7 +17,9 @@ all:
   vars:
     swap_block_size: 128M
     swap_block_count: 16
-    java_version: 1.8.0
+    java_version_amazon: 1.8.0
+    java_version_centos: 1.8.0
+    java_version_debian: 8
     jvm_initial_heap_size: 1024M
     jvm_maximum_heap_size: 1024M
     minecraft_path: /var/lib/games/minecraft
