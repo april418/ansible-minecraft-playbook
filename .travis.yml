@@ -11,13 +11,16 @@ language: python
 python:
   - 3.8
 
-os:
-  - linux
-
-dist:
-  - xenial
-  - bionic
-  - focal
+jobs:
+  include:
+    - os: linux
+      dist: trusty
+    - os: linux
+      dist: xenial
+    - os: linux
+      dist: bionic
+    - os: linux
+      dist: focal
 
 install:
   - pip install ansible
