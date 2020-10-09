@@ -1,35 +1,29 @@
-# "Infrastructure as Code" for Minecraft
+# ansible-minecraft-playbook [![Build Status](https://travis-ci.org/april418/ansible-minecraft-playbook.svg?branch=master)](https://travis-ci.org/april418/ansible-minecraft-playbook)
 
 ## Platform
 
-- Amazon Web Service EC2
+- Amazon Linux
+- Cent OS
+- Ubuntu
 
-## Dependencies
+## Prerequisites
 
-- git
-- ansible
+The following packages must be installed.
 
-### install git
-
-```bash
-$ sudo yum install git
-```
-
-### install ansible
-
-```bash
-$ sudo pip install ansible
-```
+- Git
+- Python 3.x
+- Ansible
 
 ## Configure
 
-Modify inventory/hosts file.
+Modify `inventory/sample-hosts.yml` file for your environment.
 
 ## Installation
+
+Run codes bellow:
 
 ```bash
 $ git clone https://github.com/april418/ansible-minecraft-playbook.git
 $ cd ansible-minecraft-playbook
-$ ansible-playbook main.yml -i inventory/hosts
+$ ansible-playbook main.yml -i inventory/your-hosts.yml
 ```
-
