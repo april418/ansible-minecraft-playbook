@@ -1,5 +1,15 @@
 #!/bin/bash
 
+### BEGIN INIT INFO
+# Provides:          minecraft-forged
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Minecraft Forge server
+# Description:       Start/Stop/Restart Minecraft Forge server.
+### END INIT INFO
+
 APP_NAME="MinecraftForge"
 APP_ROOT="{{ forge_path }}"
 JAR_NAME="forge-{{ forge_version }}-universal.jar"
