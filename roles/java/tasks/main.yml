@@ -1,4 +1,16 @@
 ---
+- name: update / autoremove packages with apt
+  apt:
+    update_cache: yes
+    autoremove: yes
+  when: ansible_pkg_mgr == 'apt'
+
+- name: update / autoremove packages with yum
+  yum:
+    update_cache: yes
+    autoremove: yes
+  when: ansible_pkg_mgr == 'yum'
+
 - name: install jdk on Amazon Linux
   package:
     name: "java-{{ java_version_amazon }}-openjdk.x86_64"

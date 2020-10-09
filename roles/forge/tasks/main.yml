@@ -35,6 +35,11 @@
     mode: 0755
   when: ansible_service_mgr == 'systemd'
 
+- name: enable minecraft-forged
+  service:
+    name: minecraft-forged
+    enabled: yes
+
 - name: start minecraft-forged
   service:
     name: minecraft-forged

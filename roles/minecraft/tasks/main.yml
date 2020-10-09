@@ -34,6 +34,11 @@
     mode: 0755
   when: ansible_service_mgr == 'systemd'
 
+- name: enable minecraftd
+  service:
+    name: minecraftd
+    enabled: yes
+
 - name: start minecraftd
   service:
     name: minecraftd
