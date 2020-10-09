@@ -11,8 +11,8 @@
     state: latest
   when: ansible_facts['distribution'] == 'CentOS'
 
-- name: install jdk on Debian
+- name: install jdk on Ubuntu
   package:
-    name: "openjdk-{{ java_version_debian }}-jdk"
+    name: "openjdk-{{ java_version_ubuntu }}-jdk"
     state: latest
-  when: ansible_facts['distribution'] == 'Debian'
+  when: ansible_facts['distribution'] == 'Ubuntu'

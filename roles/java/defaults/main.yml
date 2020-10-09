@@ -1,4 +1,4 @@
 ---
 java_version_amazon: 1.8.0
 java_version_centos: 1.8.0
-java_version_debian: 8
+java_version_ubuntu: 8
