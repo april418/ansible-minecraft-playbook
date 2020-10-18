@@ -17,8 +17,6 @@ jobs:
       dist: xenial
     - os: linux
       dist: bionic
-    - os: linux
-      dist: focal
 
 install:
   - pip install ansible

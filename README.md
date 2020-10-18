@@ -2,9 +2,9 @@
 
 ## Platform
 
-- Amazon Linux
+- Amazon Linux / Amazon Linux 2
 - Cent OS
-- Ubuntu
+- Ubuntu (Xenial, Bionic)
 
 ## Prerequisites
 
