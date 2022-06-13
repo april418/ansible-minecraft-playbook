@@ -1,4 +1,4 @@
-# ansible-minecraft-playbook [![Build Status](https://travis-ci.com/april418/ansible-minecraft-playbook.svg?branch=master)](https://travis-ci.com/april418/ansible-minecraft-playbook)
+# ansible-minecraft-playbook [![Test](https://github.com/april418/ansible-minecraft-playbook/actions/workflows/test.yml/badge.svg)](https://github.com/april418/ansible-minecraft-playbook/actions/workflows/test.yml)
 
 ## Platform
 
