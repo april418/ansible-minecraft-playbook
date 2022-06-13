@@ -13,5 +13,5 @@ all:
           ansible_connection: local
       vars:
   vars:
-    java_version_ubuntu: 18
+    java_version_ubuntu: 17
     minecraft_version_hex: e00c4052dac1d59a1188b2aa9d5a87113aaf1122 # 1.19
