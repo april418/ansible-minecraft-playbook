@@ -13,15 +13,9 @@
 
 - name: install jdk on Amazon Linux
   package:
-    name: "java-{{ java_version_amazon }}-openjdk.x86_64"
+    name: "java-{{ java_version_amazon }}-amazon-corretto-devel"
     state: latest
   when: ansible_facts['distribution'] == 'Amazon'
-
-- name: install jdk on Cent OS
-  package:
-    name: "java-{{ java_version_centos }}-openjdk.x86_64"
-    state: latest
-  when: ansible_facts['distribution'] == 'CentOS'
 
 - name: install jdk on Ubuntu
   package:

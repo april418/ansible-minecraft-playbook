@@ -2,7 +2,7 @@
 jvm_initial_heap_size: 1024M
 jvm_maximum_heap_size: 1024M
 minecraft_path: /var/lib/games/minecraft
-minecraft_version_hex: f02f4473dbf152c23d7d484952121db0b36698cb
+minecraft_version_hex: e00c4052dac1d59a1188b2aa9d5a87113aaf1122 # 1.19
 server_properties:
   spawn_protection: 16
   max_tick_time: 60000
@@ -53,3 +53,4 @@ server_properties:
   motd: april418's Minecraft Server. Enjoy!
   rate_limit: 0
   enable_rcon: false
+app_name: Minecraft

@@ -3,3 +3,4 @@ jvm_initial_heap_size: 1024M
 jvm_maximum_heap_size: 1024M
 forge_path: /var/lib/games/minecraft
 forge_version: 1.16.3-34.1.10
+app_name: MinecraftForge

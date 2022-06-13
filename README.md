@@ -1,9 +1,8 @@
-# ansible-minecraft-playbook [![Build Status](https://travis-ci.org/april418/ansible-minecraft-playbook.svg?branch=master)](https://travis-ci.org/april418/ansible-minecraft-playbook)
+# ansible-minecraft-playbook [![Build Status](https://travis-ci.com/april418/ansible-minecraft-playbook.svg?branch=master)](https://travis-ci.com/april418/ansible-minecraft-playbook)
 
 ## Platform
 
 - Amazon Linux / Amazon Linux 2
-- Cent OS
 - Ubuntu (Xenial, Bionic)
 
 ## Prerequisites

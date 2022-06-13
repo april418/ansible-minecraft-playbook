@@ -1,4 +1,3 @@
 ---
-java_version_amazon: 1.8.0
-java_version_centos: 1.8.0
-java_version_ubuntu: 8
+java_version_amazon: 18
+java_version_ubuntu: 18

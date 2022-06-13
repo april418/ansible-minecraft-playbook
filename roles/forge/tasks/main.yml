@@ -1,9 +1,21 @@
 ---
+- name: check minecraft-forge directory exists
+  stat:
+    path: "{{ forge_path }}"
+  register: forge_directory
+
+- name: backup current minecraft-forge directory
+  archive:
+    path: "{{ forge_path }}"
+    dest: "{{ forge_path }}/tmp/{{ app_name }}_{{ ansible_date_time.iso8601_basic_short }}.tar.gz"
+    format: gz
+  when: forge_directory.stat.exists and forge_directory.stat.isdir
+
 - name: stop minecraft-forged
   service:
     name: minecraft-forged
     state: stopped
-  ignore_errors: yes
+  when: forge_directory.stat.exists and forge_directory.stat.isdir
 
 - name: download minecraft-forge installer
   get_url:

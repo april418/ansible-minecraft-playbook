@@ -1,9 +1,21 @@
 ---
+- name: check minecraft directory exists
+  stat:
+    path: "{{ minecraft_path }}"
+  register: minecraft_directory
+
 - name: stop minecraftd
   service:
     name: minecraftd
     state: stopped
-  ignore_errors: yes
+  when: minecraft_directory.stat.exists and minecraft_directory.stat.isdir
+
+- name: backup current directory
+  archive:
+    path: "{{ minecraft_path }}"
+    dest: "{{ minecraft_path }}/tmp/{{ app_name }}_{{ ansible_date_time.iso8601_basic_short }}.tar.gz"
+    format: gz
+  when: minecraft_directory.stat.exists and minecraft_directory.stat.isdir
 
 - name: make directory
   file:

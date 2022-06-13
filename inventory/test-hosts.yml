@@ -12,63 +12,6 @@ all:
           ansible_host: localhost
           ansible_connection: local
       vars:
-        forge_path: "{{ minecraft_path }}"
-        forge_version: 1.16.3-34.1.10
   vars:
-    swap_block_size: 128M
-    swap_block_count: 16
-    java_version_ubuntu: 8
-    jvm_initial_heap_size: 1024M
-    jvm_maximum_heap_size: 1024M
-    minecraft_path: /var/lib/games/minecraft
-    minecraft_version_hex: f02f4473dbf152c23d7d484952121db0b36698cb
-    server_properties:
-      spawn_protection: 16
-      max_tick_time: 60000
-      query_port: 25565
-      generator_settings: 
-      sync_chunk_writes: true
-      force_gamemode: false
-      allow_nether: true
-      enforce_whitelist: false
-      gamemode: survival
-      broadcast_console_to_ops: true
-      enable_query: false
-      player_idle_timeout: 0
-      difficulty: easy
-      broadcast_rcon_to_ops: true
-      spawn_monsters: true
-      op_permission_level: 4
-      pvp: true
-      entity_broadcast_range_percentage: 100
-      snooper_enabled: true
-      level_type: default
-      enable_status: true
-      hardcore: false
-      enable_command_block: false
-      network_compression_threshold: 256
-      max_players: 20
-      max_world_size: 29999984
-      resource_pack_sha1: 
-      function_permission_level: 2
-      rcon_port: 25575
-      server_port: 25565
-      server_ip: 
-      spawn_npcs: true
-      allow_flight: false
-      level_name: world
-      view_distance: 10
-      resource_pack: 
-      spawn_animals: true
-      white_list: false
-      rcon_password: 
-      generate_structures: true
-      online_mode: true
-      max_build_height: 256
-      level_seed: 
-      prevent_proxy_connections: false
-      use_native_transport: true
-      enable_jmx_monitoring: false
-      motd: april418's Minecraft Server. Enjoy!
-      rate_limit: 0
-      enable_rcon: false
+    java_version_ubuntu: 18
+    minecraft_version_hex: e00c4052dac1d59a1188b2aa9d5a87113aaf1122 # 1.19
