@@ -2,7 +2,7 @@
 Description=Start/Stop/Restart Minecraft Forge server.
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/etc/init.d/minecraft-forged start
 ExecStop=/etc/init.d/minecraft-forged stop
 Restart=always

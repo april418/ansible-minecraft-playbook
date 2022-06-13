@@ -2,7 +2,7 @@
 Description=Start/Stop/Restart Minecraft server.
 
 [Service]
-Type = forking
+Type = simple
 ExecStart=/etc/init.d/minecraftd start
 ExecStop=/etc/init.d/minecraftd stop
 Restart=always
